@@ -11,7 +11,7 @@ import com.dev.colorlistguideapp.models.ColorData
 import com.dev.colorlistguideapp.viewModel.ColorFavoriteViewModel
 import kotlinx.android.synthetic.main.item_row.view.*
 
-class ColorAdapter(private var list : MutableList<ColorData>,private val viewModel: ColorFavoriteViewModel) : RecyclerView.Adapter<ColorAdapter.ViewHolder>(){
+class ColorAdapter(private var list : MutableList<ColorData>,private val viewModel: ColorFavoriteViewModel,private val isCanFav : Boolean) : RecyclerView.Adapter<ColorAdapter.ViewHolder>(){
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtName : TextView = itemView.txt_name
@@ -34,6 +34,8 @@ class ColorAdapter(private var list : MutableList<ColorData>,private val viewMod
         holder.txtColor.text = item.color
         holder.txtYear.text = item.year.toString()
         holder.txtPantone.text = item.pantone_value
+
+        holder.btnFavorite.visibility = if(isCanFav) View.VISIBLE else View.GONE
 
         holder.btnFavorite.setOnClickListener {
             item.is_favorite = !item.is_favorite

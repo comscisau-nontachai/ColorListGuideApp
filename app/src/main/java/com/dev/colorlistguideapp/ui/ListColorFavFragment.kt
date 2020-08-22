@@ -8,10 +8,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.colorlistguideapp.R
+import com.dev.colorlistguideapp.adapter.ColorAdapter
 import com.dev.colorlistguideapp.viewModel.ColorFavoriteViewModel
+import kotlinx.android.synthetic.main.fragment_list_color_fav.*
 
 class ListColorFavFragment : Fragment() {
+
+    lateinit var colorAdapter : ColorAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,11 @@ class ListColorFavFragment : Fragment() {
         viewModel.listColor.observe(viewLifecycleOwner, Observer { listData->
             Log.d(TAG, "onViewCreated: ${listData.filter { it.is_favorite }}")
 
+            colorAdapter = ColorAdapter(listData.filter { it.is_favorite }.toMutableList(),viewModel,false)
+            recycler_view_list_fav.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = colorAdapter
+            }
         })
     }
 }
