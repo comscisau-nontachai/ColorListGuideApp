@@ -10,10 +10,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.dev.colorlistguideapp.R
 import com.dev.colorlistguideapp.adapter.ColorAdapter
 import com.dev.colorlistguideapp.utils.SortType
+import com.dev.colorlistguideapp.utils.SwipeToDeleteCallback
 import com.dev.colorlistguideapp.viewModel.ColorFavoriteViewModel
 import kotlinx.android.synthetic.main.fragment_list_color_fav.*
 
@@ -42,12 +45,20 @@ class ListColorFavFragment : Fragment() {
         viewModel.listColor.observe(viewLifecycleOwner, Observer { listData ->
             Log.d(TAG, "onViewCreated: ${listData.filter { it.is_favorite }}")
 
-            colorAdapter =
-                ColorAdapter(listData.filter { it.is_favorite }.toMutableList(), viewModel, false)
+            colorAdapter = ColorAdapter(listData.filter { it.is_favorite }.toMutableList(), viewModel, false)
             recycler_view_list_fav.apply {
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = colorAdapter
             }
+
+            val swipeHandler = object : SwipeToDeleteCallback(requireContext()) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val adapter : ColorAdapter = recycler_view_list_fav.adapter as ColorAdapter
+                    adapter.removeAt(viewHolder.adapterPosition)
+                }
+            }
+            val itemTouchHelper = ItemTouchHelper(swipeHandler)
+            itemTouchHelper.attachToRecyclerView(recycler_view_list_fav)
         })
     }
 

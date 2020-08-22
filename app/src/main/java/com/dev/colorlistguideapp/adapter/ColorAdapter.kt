@@ -53,10 +53,16 @@ class ColorAdapter(
         holder.btnFavorite.isChecked = item.is_favorite
     }
 
+    fun removeAt(position: Int) {
+        list[position].is_favorite = false
+        list.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     fun sortData(type: SortType) {
         when (type) {
-            SortType.ASC -> Collections.sort(list,AscCompare())
-            else ->  Collections.sort(list,DescCompare())
+            SortType.ASC -> Collections.sort(list, AscCompare())
+            else -> Collections.sort(list, DescCompare())
         }
         notifyDataSetChanged()
     }

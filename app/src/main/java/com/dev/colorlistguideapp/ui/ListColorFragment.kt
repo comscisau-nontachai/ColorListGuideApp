@@ -42,6 +42,10 @@ class ListColorFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity()).get(ColorFavoriteViewModel::class.java)
 
+        viewModel.isNotify.observe(viewLifecycleOwner, Observer {
+            colorAdapter.notifyDataSetChanged()
+        })
+
         viewModel.getColorData().observe(viewLifecycleOwner, Observer { dataList ->
             colorAdapter = ColorAdapter(dataList, viewModel, true)
             recycler_view_list.apply {

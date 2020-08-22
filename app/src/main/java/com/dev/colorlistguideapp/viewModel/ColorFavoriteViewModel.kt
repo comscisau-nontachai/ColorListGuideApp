@@ -17,6 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ColorFavoriteViewModel : ViewModel() {
 
     var listColor = MutableLiveData<MutableList<ColorData>>()
+    var isNotify = MutableLiveData<Boolean>()
 
     fun getColorData(): MutableLiveData<MutableList<ColorData>> {
         getCallApi()
