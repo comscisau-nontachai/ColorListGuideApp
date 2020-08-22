@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dev.colorlistguideapp.R
 import com.dev.colorlistguideapp.adapter.ColorAdapter
+import com.dev.colorlistguideapp.utils.SortType
 import com.dev.colorlistguideapp.viewModel.ColorFavoriteViewModel
 import kotlinx.android.synthetic.main.fragment_list_color.*
 
@@ -53,14 +54,15 @@ class ListColorFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         R.id.menu_asc -> {
             Toast.makeText(requireContext(), "ASC", Toast.LENGTH_SHORT).show()
+            colorAdapter.sortData(SortType.ASC)
             true
         }
         R.id.menu_desc -> {
             Toast.makeText(requireContext(), "DESC", Toast.LENGTH_SHORT).show()
+            colorAdapter.sortData(SortType.DESC)
             true
         }
         else -> {
-            Toast.makeText(requireContext(), "cancel", Toast.LENGTH_SHORT).show()
             false
         }
     }
