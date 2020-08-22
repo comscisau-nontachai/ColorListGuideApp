@@ -80,6 +80,7 @@
         <ToggleButton
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:id="@+id/btn_fav"
             android:background="@drawable/toggle_fav"
             app:layout_constraintTop_toTopOf="parent"
             android:textOff=""

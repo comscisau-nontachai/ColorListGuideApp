@@ -7,7 +7,8 @@ data class ColorData(
     @SerializedName("name") val name: String,
     @SerializedName("year") val year: Int,
     @SerializedName("color") val color: String,
-    @SerializedName("pantone_value") val pantone_value: String
+    @SerializedName("pantone_value") val pantone_value: String,
+    var is_favorite : Boolean = false
 )
 
 
