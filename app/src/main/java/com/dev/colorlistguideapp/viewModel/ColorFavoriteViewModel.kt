@@ -16,9 +16,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ColorFavoriteViewModel : ViewModel() {
 
-    val listColor = MutableLiveData<List<ColorData>>()
+    val listColor = MutableLiveData<MutableList<ColorData>>()
 
-    fun getColorData(): MutableLiveData<List<ColorData>> {
+    fun getColorData(): MutableLiveData<MutableList<ColorData>> {
         getCallApi()
         return listColor
     }

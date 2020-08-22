@@ -7,5 +7,5 @@ data class ColorResponse(
     @SerializedName("per_page") val per_page: Int,
     @SerializedName("total") val total: Int,
     @SerializedName("total_pages") val total_pages: Int,
-    @SerializedName("data") val data: List<ColorData>
+    @SerializedName("data") val data: MutableList<ColorData>
 )
