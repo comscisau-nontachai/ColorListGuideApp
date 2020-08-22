@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--<item
+        android:id="@+id/menu_asc"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_baseline_arrow_drop_down_24"
+        android:title="sortAZ"></item>-->
+
+    <item
+        android:id="@+id/menu_asc"
+        android:title="@string/txt_sort_asc"
+        app:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/menu_desc"
+        android:title="@string/txt_sort_desc"
+        app:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/menu_cancel"
+        android:title="@string/txt_sort_cancel"
+        app:showAsAction="collapseActionView"/>
 </menu>
