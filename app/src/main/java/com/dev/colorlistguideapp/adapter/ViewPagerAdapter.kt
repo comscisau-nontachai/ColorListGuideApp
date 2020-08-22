@@ -5,7 +5,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.bumptech.glide.load.engine.Resource
 import com.dev.colorlistguideapp.R
 import com.dev.colorlistguideapp.ui.ListColorFavFragment
 import com.dev.colorlistguideapp.ui.ListColorFragment
